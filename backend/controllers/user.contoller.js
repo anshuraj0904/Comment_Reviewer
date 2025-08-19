@@ -2,7 +2,6 @@ import User from "../models/user.model.js";
 import jwt from "jsonwebtoken";
 import validator from "validator";
 import bcrypt from "bcrypt";
-import { use } from "react";
 
 export const userSignup = async (req, res) => {
   const { name, email, password } = req.body;
@@ -168,7 +167,7 @@ export const updateUserName = async (req, res) => {
     await user.save()
     return res.status(200).json({message:"User name updated successfully!"})
   } catch (e) {
-    console.error("Error updating the user name", e)
+    console.error("Error updating the user name: ", e)
     return res.status(500).json({message:"Some error occured while updating the user name!"})
   }
 };
